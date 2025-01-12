@@ -18,7 +18,7 @@ sentiment_analyzer = load_sentiment_model()
 tokenizer, response_model = load_response_model()
 
 # Streamlit UI
-st.title("Chatbot with Sentiment and Intent Detection")
+st.title("Chatbot with Sentiment and Intent Detection by Khubaib-Sanan")
 user_input = st.text_input("Type your message:")
 
 if user_input:
