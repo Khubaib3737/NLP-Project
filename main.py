@@ -1,22 +1,28 @@
 import streamlit as st
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 
-# Load Hugging Face models from a local cache directory
+# Load Hugging Face models dynamically at runtime
 # Sentiment Analysis
-sentiment_analyzer = pipeline(
-    "sentiment-analysis", 
-    model="./models/distilbert-base-uncased-finetuned-sst-2-english"
-)
+@st.cache_resource  # Cache the model to avoid reloading it
+def load_sentiment_model():
+    return pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
 
-# Intent Detection (Text Classification)
-intent_classifier = pipeline(
-    "text-classification", 
-    model="./models/pysentimiento/bert-base-uncased-emo"
-)
+# Intent Detection
+@st.cache_resource
+def load_intent_model():
+    return pipeline("text-classification", model="pysentimiento/bert-base-uncased-emo")
 
 # Response Generation
-tokenizer = AutoTokenizer.from_pretrained("./models/microsoft/DialoGPT-small")
-response_model = AutoModelForCausalLM.from_pretrained("./models/microsoft/DialoGPT-small")
+@st.cache_resource
+def load_response_model():
+    tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-small")
+    model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-small")
+    return tokenizer, model
+
+# Load all models
+sentiment_analyzer = load_sentiment_model()
+intent_classifier = load_intent_model()
+tokenizer, response_model = load_response_model()
 
 # Streamlit UI
 st.title("Chatbot with Sentiment and Intent Detection")
