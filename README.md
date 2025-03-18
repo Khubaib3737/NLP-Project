@@ -22,12 +22,13 @@ Prerequisites:
 
 Installation:
 1. Clone the repository:
-  -> git clone https://github.com/your-repo/chatbot-sentiment-intent.git
-  -> cd chatbot-sentiment-intent
+  -> git clone https://github.com/Khubaib3737/NLP-Project.git
+  -> cd NLP-Project
 2. Install dependencies:
   -> pip install -r requirements.txt
 3. Run the app locally:
   -> streamlit run app.py
+  -> You can also visit: https://nlp-by-ks.streamlit.app/
 Access the a;pp in your browser at http://localhost:8501.
 
 Usage:
