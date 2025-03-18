@@ -28,7 +28,7 @@ Installation:
   -> pip install -r requirements.txt
 3. Run the app locally:
   -> streamlit run app.py
-  -> You can also visit: https://nlp-by-ks.streamlit.app/
+  -> You can also visit: https://nlp-by-sk.streamlit.app/
 Access the a;pp in your browser at http://localhost:8501.
 
 Usage:
